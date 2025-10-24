@@ -1,0 +1,16 @@
+/home/nvidia/proknee_ws/install/my_robot_base/lib/my_robot_base/serial_comm_node
+/home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/package_run_dependencies/my_robot_base
+/home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/parent_prefix_path/my_robot_base
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/ament_prefix_path.sh
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/ament_prefix_path.dsv
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/path.sh
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/path.dsv
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.bash
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.sh
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.zsh
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.dsv
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/package.dsv
+/home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/packages/my_robot_base
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/cmake/my_robot_baseConfig.cmake
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/cmake/my_robot_baseConfig-version.cmake
+/home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/package.xml

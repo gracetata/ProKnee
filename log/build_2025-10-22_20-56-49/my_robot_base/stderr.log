@@ -1,0 +1,48 @@
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:[m[K In constructor ‘[01m[Kdrivers::serial_driver::SerialCommNode::SerialCommNode()[m[K’:
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:26:62:[m[K [01;31m[Kerror: [m[K‘[01m[KBaudRate[m[K’ in namespace ‘[01m[Kdrivers::serial_driver[m[K’ does not name a type
+   26 |         auto baud_rate = static_cast<drivers::serial_driver::[01;31m[KBaudRate[m[K>(this->get_parameter("baudrate").as_int());
+      |                                                              [01;31m[K^~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:1[m[K:
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:32:41:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[Kint64_t[m[K’ {aka ‘[01m[Klong int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   32 |         RCLCPP_INFO(this->get_logger(), [01;35m[K"Connecting to serial port: %s at baudrate: %d"[m[K, port_name.c_str(), [32m[Kthis->get_parameter("baudrate").as_int()[m[K);
+      |                                         [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                     [32m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                                                                                                                   [32m[K|[m[K
+      |                                                                                                                                                   [32m[Kint64_t {aka long int}[m[K
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:32:86:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   32 |         RCLCPP_INFO(this->get_logger(), "Connecting to serial port: %s at baudrate: [01;36m[K%d[m[K", port_name.c_str(), this->get_parameter("baudrate").as_int());
+      |                                                                                     [01;36m[K~^[m[K
+      |                                                                                      [01;36m[K|[m[K
+      |                                                                                      [01;36m[Kint[m[K
+      |                                                                                     [32m[K%ld[m[K
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:43:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass drivers::serial_driver::SerialDriver[m[K’ has no member named ‘[01m[Kopen[m[K’
+   43 |             m_driver->[01;31m[Kopen[m[K();
+      |                       [01;31m[K^~~~[m[K
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:[m[K In destructor ‘[01m[Kvirtual drivers::serial_driver::SerialCommNode::~SerialCommNode()[m[K’:
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:69:35:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass drivers::serial_driver::SerialDriver[m[K’ has no member named ‘[01m[Kis_open[m[K’
+   69 |         if (m_driver && m_driver->[01;31m[Kis_open[m[K()) {
+      |                                   [01;31m[K^~~~~~~[m[K
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:70:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass drivers::serial_driver::SerialDriver[m[K’ has no member named ‘[01m[Kclose[m[K’
+   70 |             m_driver->[01;31m[Kclose[m[K();
+      |                       [01;31m[K^~~~~[m[K
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:[m[K In member function ‘[01m[Kvoid drivers::serial_driver::SerialCommNode::write_to_serial(std::shared_ptr<std_msgs::msg::String_<std::allocator<void> > >)[m[K’:
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:81:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass drivers::serial_driver::SerialDriver[m[K’ has no member named ‘[01m[Kwrite[m[K’
+   81 |             m_driver->[01;31m[Kwrite[m[K(data);
+      |                       [01;31m[K^~~~~[m[K
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:[m[K In member function ‘[01m[Kvoid drivers::serial_driver::SerialCommNode::read_from_serial()[m[K’:
+[01m[K/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:93:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass drivers::serial_driver::SerialDriver[m[K’ has no member named ‘[01m[Kread[m[K’
+   93 |             m_driver->[01;31m[Kread[m[K(buffer);
+      |                       [01;31m[K^~~~[m[K
+gmake[2]: *** [CMakeFiles/serial_comm_node.dir/build.make:76: CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/serial_comm_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

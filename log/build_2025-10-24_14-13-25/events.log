@@ -1,0 +1,164 @@
+[0.000000] (-) TimerEvent: {}
+[0.000223] (my_robot_base) JobQueued: {'identifier': 'my_robot_base', 'dependencies': OrderedDict()}
+[0.000810] (my_robot_base) JobStarted: {'identifier': 'my_robot_base'}
+[0.012584] (my_robot_base) JobProgress: {'identifier': 'my_robot_base', 'progress': 'cmake'}
+[0.013875] (my_robot_base) JobProgress: {'identifier': 'my_robot_base', 'progress': 'build'}
+[0.015045] (my_robot_base) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/proknee_ws/build/my_robot_base', '--', '-j8', '-l8'], 'cwd': '/home/nvidia/proknee_ws/build/my_robot_base', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'nvidia'), ('SSH_CLIENT', '192.168.3.89 9125 22'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/nvidia/.vscode-server/cli/servers/Stable-7d842fb85a0275a4a8e4d7e040d2625abbf7f084/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-12.6/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-12.6/lib64:'), ('BROWSER', '/home/nvidia/.vscode-server/cli/servers/Stable-7d842fb85a0275a4a8e4d7e040d2625abbf7f084/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/nvidia'), ('OLDPWD', '/home/nvidia/proknee_ws'), ('TERM_PROGRAM_VERSION', '1.105.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-7c5d1b55-c42e-4f79-a664-8d290dae3623.sock'), ('JETSON_L4T', '36.4.4'), ('ROS_PYTHON_VERSION', '3'), ('JETSON_MODEL', 'NVIDIA Jetson Orin NX Engineering Reference Developer Kit'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/nvidia/.vscode-server/cli/servers/Stable-7d842fb85a0275a4a8e4d7e040d2625abbf7f084/server/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/nvidia/.vscode-server/cli/servers/Stable-7d842fb85a0275a4a8e4d7e040d2625abbf7f084/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JETSON_MODULE', 'NVIDIA Jetson Orin NX (16GB ram)'), ('JETSON_SERIAL_NUMBER', '1421525020070'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '12'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/usr/local/cuda-12.6/bin:/home/nvidia/.vscode-server/cli/servers/Stable-7d842fb85a0275a4a8e4d7e040d2625abbf7f084/server/bin/remote-cli:/opt/ros/humble/bin:/usr/local/cuda-12.6/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nvidia/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('JETSON_SOC', 'tegra234'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-d573edadd7.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('GIT_PAGER', 'cat'), ('JETSON_CUDA_ARCH_BIN', '8.7'), ('PWD', '/home/nvidia/proknee_ws/build/my_robot_base'), ('SSH_CONNECTION', '192.168.3.89 9125 192.168.3.92 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('JETSON_JETPACK', ''), ('JETSON_P_NUMBER', 'p3767-0000'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099532] (-) TimerEvent: {}
+[0.109393] (my_robot_base) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target serial_comm_node\n'}
+[0.139985] (my_robot_base) StdoutLine: {'line': b'[ 50%] Building CXX object CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o\n'}
+[0.199706] (-) TimerEvent: {}
+[0.300111] (-) TimerEvent: {}
+[0.400511] (-) TimerEvent: {}
+[0.500909] (-) TimerEvent: {}
+[0.601305] (-) TimerEvent: {}
+[0.701692] (-) TimerEvent: {}
+[0.802091] (-) TimerEvent: {}
+[0.902492] (-) TimerEvent: {}
+[1.002898] (-) TimerEvent: {}
+[1.103318] (-) TimerEvent: {}
+[1.203728] (-) TimerEvent: {}
+[1.304150] (-) TimerEvent: {}
+[1.404563] (-) TimerEvent: {}
+[1.504978] (-) TimerEvent: {}
+[1.605392] (-) TimerEvent: {}
+[1.705796] (-) TimerEvent: {}
+[1.806208] (-) TimerEvent: {}
+[1.906629] (-) TimerEvent: {}
+[2.007050] (-) TimerEvent: {}
+[2.107466] (-) TimerEvent: {}
+[2.207870] (-) TimerEvent: {}
+[2.308281] (-) TimerEvent: {}
+[2.408681] (-) TimerEvent: {}
+[2.509092] (-) TimerEvent: {}
+[2.609499] (-) TimerEvent: {}
+[2.709900] (-) TimerEvent: {}
+[2.810307] (-) TimerEvent: {}
+[2.910718] (-) TimerEvent: {}
+[3.011136] (-) TimerEvent: {}
+[3.111551] (-) TimerEvent: {}
+[3.211975] (-) TimerEvent: {}
+[3.312385] (-) TimerEvent: {}
+[3.412823] (-) TimerEvent: {}
+[3.513275] (-) TimerEvent: {}
+[3.613706] (-) TimerEvent: {}
+[3.714123] (-) TimerEvent: {}
+[3.814535] (-) TimerEvent: {}
+[3.915147] (-) TimerEvent: {}
+[4.015549] (-) TimerEvent: {}
+[4.115964] (-) TimerEvent: {}
+[4.216359] (-) TimerEvent: {}
+[4.316755] (-) TimerEvent: {}
+[4.417159] (-) TimerEvent: {}
+[4.517583] (-) TimerEvent: {}
+[4.618008] (-) TimerEvent: {}
+[4.718434] (-) TimerEvent: {}
+[4.818837] (-) TimerEvent: {}
+[4.919258] (-) TimerEvent: {}
+[5.019658] (-) TimerEvent: {}
+[5.120062] (-) TimerEvent: {}
+[5.220462] (-) TimerEvent: {}
+[5.320861] (-) TimerEvent: {}
+[5.421263] (-) TimerEvent: {}
+[5.521662] (-) TimerEvent: {}
+[5.622063] (-) TimerEvent: {}
+[5.722458] (-) TimerEvent: {}
+[5.822869] (-) TimerEvent: {}
+[5.923507] (-) TimerEvent: {}
+[6.023924] (-) TimerEvent: {}
+[6.124368] (-) TimerEvent: {}
+[6.224781] (-) TimerEvent: {}
+[6.325197] (-) TimerEvent: {}
+[6.336649] (my_robot_base) StderrLine: {'line': b'/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp: In member function \xe2\x80\x98void drivers::serial_driver::SerialCommNode::load_channel_mapping_params()\xe2\x80\x99:\n'}
+[6.337133] (my_robot_base) StderrLine: {'line': b'/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:304:13: error: \xe2\x80\x98TX_CHF_FIELD_LIST\xe2\x80\x99 was not declared in this scope\n'}
+[6.337303] (my_robot_base) StderrLine: {'line': b'  304 |             TX_CHF_FIELD_LIST\n'}
+[6.337434] (my_robot_base) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~~~~\n'}
+[6.337548] (my_robot_base) StderrLine: {'line': b'/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:302:17: warning: unused variable \xe2\x80\x98idx\xe2\x80\x99 [-Wunused-variable]\n'}
+[6.337657] (my_robot_base) StderrLine: {'line': b'  302 |             int idx = 0;\n'}
+[6.337781] (my_robot_base) StderrLine: {'line': b'      |                 ^~~\n'}
+[6.362932] (my_robot_base) StderrLine: {'line': b'/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:310:13: error: \xe2\x80\x98TX_CHB_FIELD_LIST\xe2\x80\x99 was not declared in this scope\n'}
+[6.363386] (my_robot_base) StderrLine: {'line': b'  310 |             TX_CHB_FIELD_LIST\n'}
+[6.363514] (my_robot_base) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~~~~\n'}
+[6.363629] (my_robot_base) StderrLine: {'line': b'/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:308:17: warning: unused variable \xe2\x80\x98idx\xe2\x80\x99 [-Wunused-variable]\n'}
+[6.363739] (my_robot_base) StderrLine: {'line': b'  308 |             int idx = 0;\n'}
+[6.363846] (my_robot_base) StderrLine: {'line': b'      |                 ^~~\n'}
+[6.425366] (-) TimerEvent: {}
+[6.525771] (-) TimerEvent: {}
+[6.626178] (-) TimerEvent: {}
+[6.726579] (-) TimerEvent: {}
+[6.827006] (-) TimerEvent: {}
+[6.927410] (-) TimerEvent: {}
+[7.027832] (-) TimerEvent: {}
+[7.128225] (-) TimerEvent: {}
+[7.228637] (-) TimerEvent: {}
+[7.329049] (-) TimerEvent: {}
+[7.429465] (-) TimerEvent: {}
+[7.529829] (-) TimerEvent: {}
+[7.630212] (-) TimerEvent: {}
+[7.730622] (-) TimerEvent: {}
+[7.831055] (-) TimerEvent: {}
+[7.931469] (-) TimerEvent: {}
+[8.031855] (-) TimerEvent: {}
+[8.132264] (-) TimerEvent: {}
+[8.232685] (-) TimerEvent: {}
+[8.333094] (-) TimerEvent: {}
+[8.433501] (-) TimerEvent: {}
+[8.533908] (-) TimerEvent: {}
+[8.634317] (-) TimerEvent: {}
+[8.734728] (-) TimerEvent: {}
+[8.835150] (-) TimerEvent: {}
+[8.935565] (-) TimerEvent: {}
+[9.035983] (-) TimerEvent: {}
+[9.136400] (-) TimerEvent: {}
+[9.236811] (-) TimerEvent: {}
+[9.337228] (-) TimerEvent: {}
+[9.447186] (-) TimerEvent: {}
+[9.547623] (-) TimerEvent: {}
+[9.648026] (-) TimerEvent: {}
+[9.748456] (-) TimerEvent: {}
+[9.848893] (-) TimerEvent: {}
+[9.949304] (-) TimerEvent: {}
+[10.049748] (-) TimerEvent: {}
+[10.150187] (-) TimerEvent: {}
+[10.250601] (-) TimerEvent: {}
+[10.351243] (-) TimerEvent: {}
+[10.451667] (-) TimerEvent: {}
+[10.552084] (-) TimerEvent: {}
+[10.652523] (-) TimerEvent: {}
+[10.752950] (-) TimerEvent: {}
+[10.853372] (-) TimerEvent: {}
+[10.953777] (-) TimerEvent: {}
+[11.054187] (-) TimerEvent: {}
+[11.154600] (-) TimerEvent: {}
+[11.255035] (-) TimerEvent: {}
+[11.355430] (-) TimerEvent: {}
+[11.455830] (-) TimerEvent: {}
+[11.556236] (-) TimerEvent: {}
+[11.656643] (-) TimerEvent: {}
+[11.757038] (-) TimerEvent: {}
+[11.857451] (-) TimerEvent: {}
+[11.957854] (-) TimerEvent: {}
+[12.058254] (-) TimerEvent: {}
+[12.158666] (-) TimerEvent: {}
+[12.259090] (-) TimerEvent: {}
+[12.359524] (-) TimerEvent: {}
+[12.460032] (-) TimerEvent: {}
+[12.560532] (-) TimerEvent: {}
+[12.661020] (-) TimerEvent: {}
+[12.761500] (-) TimerEvent: {}
+[12.861978] (-) TimerEvent: {}
+[12.962458] (-) TimerEvent: {}
+[13.062973] (-) TimerEvent: {}
+[13.163531] (-) TimerEvent: {}
+[13.264048] (-) TimerEvent: {}
+[13.364537] (-) TimerEvent: {}
+[13.465043] (-) TimerEvent: {}
+[13.565505] (-) TimerEvent: {}
+[13.665985] (-) TimerEvent: {}
+[13.709559] (my_robot_base) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/serial_comm_node.dir/build.make:76: CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o] Error 1\n'}
+[13.710454] (my_robot_base) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/serial_comm_node.dir/all] Error 2\n'}
+[13.710624] (my_robot_base) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[13.714350] (my_robot_base) CommandEnded: {'returncode': 2}
+[13.755620] (my_robot_base) JobEnded: {'identifier': 'my_robot_base', 'rc': 2}
+[13.766094] (-) TimerEvent: {}
+[13.767236] (-) EventReactorShutdown: {}

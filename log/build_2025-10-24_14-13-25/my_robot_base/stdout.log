@@ -1,0 +1,2 @@
+Consolidate compiler generated dependencies of target serial_comm_node
+[ 50%] Building CXX object CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o

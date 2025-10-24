@@ -1,0 +1,16 @@
+/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp: In member function ‘void drivers::serial_driver::SerialCommNode::load_channel_mapping_params()’:
+/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:304:13: error: ‘TX_CHF_FIELD_LIST’ was not declared in this scope
+  304 |             TX_CHF_FIELD_LIST
+      |             ^~~~~~~~~~~~~~~~~
+/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:302:17: warning: unused variable ‘idx’ [-Wunused-variable]
+  302 |             int idx = 0;
+      |                 ^~~
+/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:310:13: error: ‘TX_CHB_FIELD_LIST’ was not declared in this scope
+  310 |             TX_CHB_FIELD_LIST
+      |             ^~~~~~~~~~~~~~~~~
+/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:308:17: warning: unused variable ‘idx’ [-Wunused-variable]
+  308 |             int idx = 0;
+      |                 ^~~
+gmake[2]: *** [CMakeFiles/serial_comm_node.dir/build.make:76: CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/serial_comm_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

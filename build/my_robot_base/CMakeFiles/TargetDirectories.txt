@@ -1,0 +1,10 @@
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/uninstall.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/my_robot_base_uninstall.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/serial_comm_node.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/test.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/edit_cache.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/rebuild_cache.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/list_install_components.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/install.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/install/local.dir
+/home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/install/strip.dir

@@ -1,0 +1,20 @@
+[0.016s] Invoking command in '/home/nvidia/proknee_ws/build/my_robot_base': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/nvidia/proknee_ws/build/my_robot_base -- -j8 -l8
+[0.109s] Consolidate compiler generated dependencies of target serial_comm_node
+[0.139s] [ 50%] Building CXX object CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o
+[6.336s] /home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp: In member function ‘void drivers::serial_driver::SerialCommNode::load_channel_mapping_params()’:
+[6.336s] /home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:304:13: error: ‘TX_CHF_FIELD_LIST’ was not declared in this scope
+[6.336s]   304 |             TX_CHF_FIELD_LIST
+[6.337s]       |             ^~~~~~~~~~~~~~~~~
+[6.337s] /home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:302:17: warning: unused variable ‘idx’ [-Wunused-variable]
+[6.337s]   302 |             int idx = 0;
+[6.337s]       |                 ^~~
+[6.362s] /home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:310:13: error: ‘TX_CHB_FIELD_LIST’ was not declared in this scope
+[6.362s]   310 |             TX_CHB_FIELD_LIST
+[6.363s]       |             ^~~~~~~~~~~~~~~~~
+[6.363s] /home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp:308:17: warning: unused variable ‘idx’ [-Wunused-variable]
+[6.363s]   308 |             int idx = 0;
+[6.363s]       |                 ^~~
+[13.709s] gmake[2]: *** [CMakeFiles/serial_comm_node.dir/build.make:76: CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o] Error 1
+[13.710s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/serial_comm_node.dir/all] Error 2
+[13.710s] gmake: *** [Makefile:146: all] Error 2
+[13.714s] Invoked command in '/home/nvidia/proknee_ws/build/my_robot_base' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/nvidia/proknee_ws/build/my_robot_base -- -j8 -l8
