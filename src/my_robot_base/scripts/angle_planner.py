@@ -7,7 +7,7 @@ from typing import List
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
+from std_msgs.msg import String, Float32
 
 
 class AnglePlanner(Node):
@@ -30,13 +30,14 @@ class AnglePlanner(Node):
         super().__init__('angle_planner')
         # Parameters
         self.declare_parameter('joints', 2)
-        self.declare_parameter('amplitude_deg', 10.0)
+        self.declare_parameter('amplitude_deg', 2.0)
         self.declare_parameter('freq_hz', 0.5)
-        self.declare_parameter('rate_hz', 1.0)
+        self.declare_parameter('rate_hz', 10.0)
         self.declare_parameter('message_prefix', '')
         self.declare_parameter('message_suffix', '\n')
         self.declare_parameter('separator', ',')
-        self.declare_parameter('interactive', True)
+        self.declare_parameter('interactive', False)
+        self.declare_parameter('publish_string_command', False)
         # Read parameters
         self.joints = int(self.get_parameter('joints').get_parameter_value().integer_value)
         self.amplitude_deg = float(self.get_parameter('amplitude_deg').get_parameter_value().double_value)
@@ -46,6 +47,7 @@ class AnglePlanner(Node):
         self.suffix = self.get_parameter('message_suffix').get_parameter_value().string_value
         self.sep = self.get_parameter('separator').get_parameter_value().string_value
         self.interactive = bool(self.get_parameter('interactive').get_parameter_value().bool_value)
+        self.publish_string_command = bool(self.get_parameter('publish_string_command').get_parameter_value().bool_value)
 
         if self.joints <= 0:
             self.get_logger().warn('Parameter joints <= 0, forcing to 1')
@@ -54,7 +56,11 @@ class AnglePlanner(Node):
             self.get_logger().warn('Parameter rate_hz <= 0, forcing to 50.0')
             self.rate_hz = 50.0
 
-        self.publisher_ = self.create_publisher(String, 'serial_command', 10)
+        # 可选：仅在需要 ASCII 直通时发布字符串（默认关闭）
+        if self.publish_string_command:
+            self.publisher_ = self.create_publisher(String, 'serial_command', 10)
+        # 数值角度目标（度）——让串口节点填充到二进制帧
+        self.pub_angle_target = self.create_publisher(Float32, 'angle_target', 10)
         self.t0 = time.time()
 
         # Precompute phases evenly spaced
@@ -64,10 +70,11 @@ class AnglePlanner(Node):
         self.timer_ = self.create_timer(period, self.publish_command)
         self.get_logger().info(
             f'Starting AnglePlanner: joints={self.joints}, amplitude_deg={self.amplitude_deg}, '
-            f'freq_hz={self.freq_hz}, rate_hz={self.rate_hz}, interactive={self.interactive}')
+            f'freq_hz={self.freq_hz}, rate_hz={self.rate_hz}, interactive={self.interactive}, '
+            f'publish_string_command={self.publish_string_command}')
 
         # Optional interactive mode (read lines from stdin and send directly)
-        if self.interactive:
+        if self.interactive and self.publish_string_command:
             self._input_thread = threading.Thread(target=self._stdin_loop, daemon=True)
             self._input_thread.start()
 
@@ -77,11 +84,17 @@ class AnglePlanner(Node):
             self.amplitude_deg * math.sin(2.0 * math.pi * self.freq_hz * t + ph)
             for ph in self.phases
         ]
-        payload = self.prefix + self.sep.join(f'{a:.2f}' for a in angles_deg) + self.suffix
-        msg = String()
-        msg.data = payload
-        self.publisher_.publish(msg)
-        self.get_logger().debug(f'Published command: {msg.data!r}')
+        if self.publish_string_command:
+            payload = self.prefix + self.sep.join(f'{a:.2f}' for a in angles_deg) + self.suffix
+            msg = String()
+            msg.data = payload
+            self.publisher_.publish(msg)
+        # 同步发布第一个关节的角度为 angle_target（度）
+        if angles_deg:
+            self.pub_angle_target.publish(Float32(data=float(angles_deg[0])))
+        # 仅在发布字符串时打印调试
+        if self.publish_string_command:
+            self.get_logger().debug(f'Published command: {msg.data!r}')
 
     def _stdin_loop(self):
         self.get_logger().info('Interactive mode: type a line to send; Ctrl+C to quit.')
@@ -98,7 +111,8 @@ class AnglePlanner(Node):
                 payload = f"{self.prefix}{line}{self.suffix}"
                 msg = String()
                 msg.data = payload
-                self.publisher_.publish(msg)
+                if self.publish_string_command:
+                    self.publisher_.publish(msg)
                 self.get_logger().info(f'Sent (interactive): {msg.data!r}')
             except Exception as e:
                 self.get_logger().error(f'Interactive input error: {e}')

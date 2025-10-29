@@ -63,77 +63,83 @@ class SensorState:
 
 
 def parse_sensor_feedback(raw: str, prev: SensorState, now: float) -> SensorState:
-    """解析下位机反馈文本为 SensorState。
+        """解析下位机反馈文本为 SensorState。
 
-    支持两类示例格式：
-      - 键值对: "knee=12.3, vel=-5.1, fc=1"
-      - CSV:    "12.3,-5.1,1" 约定顺序 [knee_deg, knee_vel_dps, foot_contact]
+        支持两类示例格式：
+            - 键值对: "knee=12.3, vel=-5.1, foot_pressure=1" 或 "... , foot_contact=1" 等
+            - CSV:    "12.3,-5.1,1" 约定顺序 [knee_deg, knee_vel_dps, foot_contact]
 
-    若解析失败，将沿用 prev 中历史值，仅更新时间与 raw。
-    """
-    s = SensorState(t=now, raw=raw,
-                    knee_angle_deg=prev.knee_angle_deg,
-                    knee_vel_dps=prev.knee_vel_dps,
-                    foot_contact=prev.foot_contact)
+        变量名对齐：
+            - knee / knee_deg / angle / theta → 膝角（度）
+            - vel / knee_vel / omega → 膝角速度（度/秒）
+            - foot_pressure / foot_contact / contact / foot / fc → 足底接触（非零判定为接触）
 
-    txt = raw.strip()
-    if not txt:
-        return s
+        若解析失败，将沿用 prev 中历史值，仅更新时间与 raw。
+        """
+        s = SensorState(t=now, raw=raw,
+                        knee_angle_deg=prev.knee_angle_deg,
+                        knee_vel_dps=prev.knee_vel_dps,
+                        foot_contact=prev.foot_contact)
 
-    try:
-        if '=' in txt:
-            # 键值对解析
-            parts = [p.strip() for p in txt.replace(';', ',').split(',') if p.strip()]
-            kv = {}
-            for p in parts:
-                if '=' in p:
-                    k, v = p.split('=', 1)
-                    kv[k.strip().lower()] = v.strip()
-            # 常见别名
-            def getf(*keys) -> Optional[float]:
-                for k in keys:
-                    if k in kv:
-                        try:
-                            return float(kv[k])
-                        except ValueError:
-                            return None
-                return None
-            def geti(*keys) -> Optional[int]:
-                v = getf(*keys)
-                return int(v) if v is not None else None
-
-            ang = getf('knee', 'knee_deg', 'angle', 'theta')
-            vel = getf('knee_vel', 'vel', 'omega')
-            fc = geti('fc', 'foot', 'contact', 'foot_contact')
-            if ang is not None:
-                s.knee_angle_deg = ang
-            if vel is not None:
-                s.knee_vel_dps = vel
-            if fc is not None:
-                s.foot_contact = 1 if fc != 0 else 0
+        txt = raw.strip()
+        if not txt:
             return s
-        else:
-            # CSV解析
-            parts = [p.strip() for p in txt.split(',')]
-            if len(parts) >= 1:
-                try:
-                    s.knee_angle_deg = float(parts[0])
-                except ValueError:
-                    pass
-            if len(parts) >= 2:
-                try:
-                    s.knee_vel_dps = float(parts[1])
-                except ValueError:
-                    pass
-            if len(parts) >= 3:
-                try:
-                    s.foot_contact = 1 if int(float(parts[2])) != 0 else 0
-                except ValueError:
-                    pass
+
+        try:
+            if '=' in txt:
+                # 键值对解析
+                parts = [p.strip() for p in txt.replace(';', ',').split(',') if p.strip()]
+                kv = {}
+                for p in parts:
+                    if '=' in p:
+                        k, v = p.split('=', 1)
+                        kv[k.strip().lower()] = v.strip()
+                # 常见别名
+                def getf(*keys) -> Optional[float]:
+                    for k in keys:
+                        if k in kv:
+                            try:
+                                return float(kv[k])
+                            except ValueError:
+                                return None
+                    return None
+                def geti(*keys) -> Optional[int]:
+                    v = getf(*keys)
+                    return int(v) if v is not None else None
+
+                ang = getf('knee', 'knee_deg', 'angle', 'theta')
+                vel = getf('knee_vel', 'vel', 'omega')
+                # 接触信号可从 foot_contact 或 foot_pressure 等字段推断；非零即接触
+                fc_val = getf('foot_pressure', 'foot_contact', 'contact', 'foot', 'fc')
+                if ang is not None:
+                    s.knee_angle_deg = ang
+                if vel is not None:
+                    s.knee_vel_dps = vel
+                if fc_val is not None:
+                    s.foot_contact = 1 if fc_val != 0 else 0
+                return s
+            else:
+                # CSV解析
+                parts = [p.strip() for p in txt.split(',')]
+                if len(parts) >= 1:
+                    try:
+                        s.knee_angle_deg = float(parts[0])
+                    except ValueError:
+                        pass
+                if len(parts) >= 2:
+                    try:
+                        s.knee_vel_dps = float(parts[1])
+                    except ValueError:
+                        pass
+                if len(parts) >= 3:
+                    try:
+                        s.foot_contact = 1 if int(float(parts[2])) != 0 else 0
+                    except ValueError:
+                        pass
+                return s
+        except Exception:
+            # 容错：保持历史值
             return s
-    except Exception:
-        # 容错：保持历史值
-        return s
 
 
 """

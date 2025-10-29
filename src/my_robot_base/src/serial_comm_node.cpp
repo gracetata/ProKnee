@@ -1,6 +1,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <std_msgs/msg/int32.hpp>
+#include <std_msgs/msg/float32.hpp>
 #include <std_msgs/msg/int32_multi_array.hpp>
 #include <serial_driver/serial_driver.hpp>
 #include <io_context/io_context.hpp>
@@ -23,28 +24,26 @@ namespace serial_driver
 // 发送浮点字段（会依次映射到 TxPayload::chf[0..]）
 #ifndef TX_CHF_FIELD_LIST
 #define TX_CHF_FIELD_LIST \
-    X(target_torque) \
-    X(target_angle)  \
-    X(kp)            \
-    X(kd)
+    X(angle_target) \
+    X(speed_target) \
+    X(torque_target)
 #endif
 
 // 发送 int8 字段（会依次映射到 TxPayload::chb[0..]）
 #ifndef TX_CHB_FIELD_LIST
 #define TX_CHB_FIELD_LIST \
-    X(mode) \
-    X(macro) \
-    X(phase_idx)
+    X(mode) 
 #endif
 
 // -------- 接收字段同理：这里定义要读取并发布为 key=value 的字段与顺序 --------
 // 接收浮点字段（依次从 RxPayload::chf[0..] 取值）
 #ifndef RX_CHF_FIELD_LIST
 #define RX_CHF_FIELD_LIST \
-    X(knee)   \
-    X(vel)    \
-    X(torque) \
-    X(curr)
+    X(Angle)   \
+    X(Speed)    \
+    X(Torque) \
+    X(Temperature) \
+    X(Resilience)
 #endif
 
 // 接收 int16 字段（依次从 RxPayload::chs[0..] 取值）
@@ -62,20 +61,20 @@ public:
         this->declare_parameter<std::string>("port", "/dev/ttyUSB0");
         this->declare_parameter<int>("baudrate", 115200);
         this->declare_parameter<double>("tx_rate_hz", 50.0);
-        this->declare_parameter<bool>("enable_ascii_command", false);
+        this->declare_parameter<bool>("publish_raw_feedback", true);
         // 映射参数
         load_channel_mapping_params();
         
         std::string port_name = this->get_parameter("port").as_string();
         auto baud_rate = static_cast<uint32_t>(this->get_parameter("baudrate").as_int());
         double tx_rate_hz = this->get_parameter("tx_rate_hz").as_double();
-        enable_ascii_command_ = this->get_parameter("enable_ascii_command").as_bool();
+        publish_raw_feedback_ = this->get_parameter("publish_raw_feedback").as_bool();
         auto flow_control = drivers::serial_driver::FlowControl::NONE;
         auto parity = drivers::serial_driver::Parity::NONE;
         auto stop_bits = drivers::serial_driver::StopBits::ONE;
 
         // 2. 实例化并配置串口驱动
-    RCLCPP_INFO(this->get_logger(), "Connecting to serial port: %s at baudrate: %u", port_name.c_str(), baud_rate);
+        RCLCPP_INFO(this->get_logger(), "Connecting to serial port: %s at baudrate: %u", port_name.c_str(), baud_rate);
         
         try {
             // 创建并保存 IoContext，确保其生命周期覆盖整个节点
@@ -108,15 +107,41 @@ public:
             }
         );
 
-        // 可选：兼容旧 ASCII 指令（可能与二进制帧混发，默认关闭）
-        if (enable_ascii_command_) {
-            command_sub_ = this->create_subscription<std_msgs::msg::String>(
-                "serial_command", 10, std::bind(&SerialCommNode::write_to_serial, this, std::placeholders::_1));
-        }
+        // 3.1 订阅数值控制量（直接映射到 TX_CHF_FIELD_LIST 中的浮点通道）
+        angle_target_sub_ = this->create_subscription<std_msgs::msg::Float32>(
+            "angle_target", 10,
+            [this](const std_msgs::msg::Float32::SharedPtr msg){
+                latest_.angle_target = msg->data;  // 单位：度（与协议约定一致）
+            }
+        );
+        speed_target_sub_ = this->create_subscription<std_msgs::msg::Float32>(
+            "speed_target", 10,
+            [this](const std_msgs::msg::Float32::SharedPtr msg){
+                latest_.speed_target = msg->data;  // 单位：度/秒（或与协议一致）
+            }
+        );
+        torque_target_sub_ = this->create_subscription<std_msgs::msg::Float32>(
+            "torque_target", 10,
+            [this](const std_msgs::msg::Float32::SharedPtr msg){
+                latest_.torque_target = msg->data;  // 单位：牛·米（或与协议一致）
+            }
+        );
+
+        // 可选：如果上层直接发布模式（更清晰的数值话题）
+        mode_sub_ = this->create_subscription<std_msgs::msg::Int32>(
+            "mode", 10,
+            [this](const std_msgs::msg::Int32::SharedPtr msg){
+                latest_.mode = static_cast<uint8_t>(std::clamp(msg->data, 0, 255));
+            }
+        );
 
         // 4. 创建发布者，用于发布从下位机接收到的数据
         // 话题名: /serial_feedback, 消息类型: std_msgs::msg::String
         feedback_pub_ = this->create_publisher<std_msgs::msg::String>("serial_feedback", 10);
+        // 可选：发布原始十六进制数据，便于调试
+        if (publish_raw_feedback_) {
+            feedback_raw_pub_ = this->create_publisher<std_msgs::msg::String>("serial_feedback_raw", 10);
+        }
 
         // 5. 启动异步接收，收到数据后在回调中发布
         if (m_driver && m_driver->port()) {
@@ -124,6 +149,21 @@ public:
                 [this](std::vector<uint8_t> & buffer, const size_t & bytes_transferred) {
                     if (bytes_transferred == 0 || buffer.empty()) {
                         return;
+                    }
+                    // 调试：发布原始 hex 数据
+                    if (publish_raw_feedback_ && feedback_raw_pub_) {
+                        static const char * hex = "0123456789ABCDEF";
+                        std::string dump;
+                        dump.reserve(bytes_transferred * 3);
+                        for (size_t i = 0; i < bytes_transferred; ++i) {
+                            uint8_t b = buffer[i];
+                            dump.push_back(hex[b >> 4]);
+                            dump.push_back(hex[b & 0x0F]);
+                            if (i + 1 < bytes_transferred) dump.push_back(' ');
+                        }
+                        auto raw_msg = std::make_unique<std_msgs::msg::String>();
+                        raw_msg->data = std::move(dump);
+                        feedback_raw_pub_->publish(std::move(raw_msg));
                     }
                     // 将数据放入环形缓冲，并尝试解析帧
                     rx_buffer_.insert(rx_buffer_.end(), buffer.begin(), buffer.begin() + bytes_transferred);
@@ -219,19 +259,7 @@ private:
         if (idx >= 0 && idx < maxn) arr[idx] = static_cast<int8_t>(value);
     }
 
-    // 当接收到 /serial_command 话题的消息时被调用
-    void write_to_serial(const std::shared_ptr<std_msgs::msg::String> msg)
-    {
-        RCLCPP_INFO(this->get_logger(), "Sending to serial: '%s'", msg->data.c_str());
-        std::vector<uint8_t> data(msg->data.begin(), msg->data.end());
-        try {
-            if (m_driver && m_driver->port()) {
-                m_driver->port()->send(data);
-            }
-        } catch (const std::exception & e) {
-            RCLCPP_ERROR(this->get_logger(), "Failed to write to serial port: %s", e.what());
-        }
-    }
+    // 已移除 ASCII 直通路径；请通过数值话题设置控制量
 
     // ---------------- 接收解析 ----------------
     void parse_rx_buffer()
@@ -301,7 +329,7 @@ private:
         if (!(m_driver && m_driver->port())) return;
         TxPayload p{};
         // 清零
-        for (int i=0;i<10;++i) p.chf[i] = 0.0f;
+        for (int i=0;i<10;++i) p.chf[i] = 0;
         for (int i=0;i<5;++i)  p.chs[i] = 0;
         for (int i=0;i<3;++i)  p.chb[i] = 0;
     // 使用可配置映射写入（由宏统一生成）
@@ -332,15 +360,19 @@ private:
     std::unique_ptr<drivers::serial_driver::SerialDriver> m_driver;
 
     // ROS 2 订阅者、发布者和定时器
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr command_sub_;
     rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr classification_sub_;
+    rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr mode_sub_;
+    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr angle_target_sub_;
+    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr speed_target_sub_;
+    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr torque_target_sub_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr feedback_pub_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr feedback_raw_pub_;
     rclcpp::TimerBase::SharedPtr read_timer_;
     rclcpp::TimerBase::SharedPtr tx_timer_;
 
     // 状态
     std::vector<uint8_t> rx_buffer_;
-    bool enable_ascii_command_{false};
+    bool publish_raw_feedback_{true};
 
     // ---------------- 参数读取辅助 ----------------
     void load_channel_mapping_params()

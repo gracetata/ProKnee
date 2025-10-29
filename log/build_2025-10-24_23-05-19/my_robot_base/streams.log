@@ -1,0 +1,28 @@
+[0.024s] Invoking command in '/home/nvidia/proknee_ws/build/my_robot_base': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/nvidia/proknee_ws/build/my_robot_base -- -j8 -l8
+[0.124s] [35m[1mConsolidate compiler generated dependencies of target serial_comm_node[0m
+[0.194s] [ 50%] [32mBuilding CXX object CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o[0m
+[25.191s] [100%] [32m[1mLinking CXX executable serial_comm_node[0m
+[26.622s] [100%] Built target serial_comm_node
+[26.659s] Invoked command in '/home/nvidia/proknee_ws/build/my_robot_base' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/nvidia/proknee_ws/build/my_robot_base -- -j8 -l8
+[26.684s] Invoking command in '/home/nvidia/proknee_ws/build/my_robot_base': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/nvidia/proknee_ws/build/my_robot_base
+[26.700s] -- Install configuration: ""
+[26.701s] -- Execute custom install script
+[26.701s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/lib/my_robot_base/serial_comm_node
+[26.701s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/package_run_dependencies/my_robot_base
+[26.702s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/parent_prefix_path/my_robot_base
+[26.702s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/ament_prefix_path.sh
+[26.702s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/ament_prefix_path.dsv
+[26.702s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/path.sh
+[26.703s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/path.dsv
+[26.703s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.bash
+[26.703s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.sh
+[26.704s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.zsh
+[26.704s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.dsv
+[26.704s] -- Symlinking: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/package.dsv
+[26.722s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/packages/my_robot_base
+[26.723s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/cmake/my_robot_baseConfig.cmake
+[26.723s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/cmake/my_robot_baseConfig-version.cmake
+[26.723s] -- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/package.xml
+[26.724s] -- Up-to-date: /home/nvidia/proknee_ws/install/my_robot_base/lib/my_robot_base/angle_planner
+[26.724s] -- Up-to-date: /home/nvidia/proknee_ws/install/my_robot_base/lib/my_robot_base/keyboard_motion_mode
+[26.729s] Invoked command in '/home/nvidia/proknee_ws/build/my_robot_base' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/nvidia/proknee_ws/build/my_robot_base

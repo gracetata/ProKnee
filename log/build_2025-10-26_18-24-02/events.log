@@ -1,0 +1,342 @@
+[0.000000] (-) TimerEvent: {}
+[0.000648] (my_robot_base) JobQueued: {'identifier': 'my_robot_base', 'dependencies': OrderedDict()}
+[0.001155] (my_robot_base) JobStarted: {'identifier': 'my_robot_base'}
+[0.014679] (my_robot_base) JobProgress: {'identifier': 'my_robot_base', 'progress': 'cmake'}
+[0.015918] (my_robot_base) JobProgress: {'identifier': 'my_robot_base', 'progress': 'build'}
+[0.017029] (my_robot_base) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/proknee_ws/build/my_robot_base', '--', '-j8', '-l8'], 'cwd': '/home/nvidia/proknee_ws/build/my_robot_base', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PYTHON_BASIC_REPL', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'nvidia'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-12.6/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-12.6/lib64:'), ('HOME', '/home/nvidia'), ('CHROME_DESKTOP', 'code.desktop'), ('OLDPWD', '/home/nvidia/proknee_ws'), ('TERM_PROGRAM_VERSION', '1.105.1'), ('DESKTOP_SESSION', 'ubuntu'), ('JETSON_L4T', '36.4.7'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('JETSON_MODEL', 'NVIDIA Jetson Orin NX Engineering Reference Developer Kit'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '2739'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('SYSTEMD_EXEC_PID', '2915'), ('BUNDLED_DEBUGPY_PATH', '/home/nvidia/.vscode/extensions/ms-python.debugpy-2025.14.1-linux-arm64/bundled/libs/debugpy'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3554'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'nvidia'), ('JETSON_MODULE', 'NVIDIA Jetson Orin NX (16GB ram)'), ('JETSON_SERIAL_NUMBER', '1421525020070'), ('JOURNAL_STREAM', '8:110214'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/cuda-12.6/bin:/opt/ros/humble/bin:/usr/local/cuda-12.6/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/nvidia/.vscode/extensions/ms-python.debugpy-2025.14.1-linux-arm64/bundled/scripts/noConfigScripts:/home/nvidia/.config/Code/User/globalStorage/github.copilot-chat/debugCommand'), ('SESSION_MANAGER', 'local/jetson-nx:@/tmp/.ICE-unix/2887,unix/jetson-nx:/tmp/.ICE-unix/2887'), ('INVOCATION_ID', '86290523019a445f8d3fb60bd6455bf7'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/home/nvidia/.vscode/extensions/ms-python.debugpy-2025.14.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f7f7e7bee3ed306a.txt'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('PYTHONSTARTUP', '/home/nvidia/.config/Code/User/workspaceStorage/fd94302adf72c0eed46c8c1525f62add/ms-python.python/pythonrc.py'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('JETSON_SOC', 'tegra234'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-e10ec5f22f.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('GIT_PAGER', 'cat'), ('QT_IM_MODULE', 'ibus'), ('JETSON_CUDA_ARCH_BIN', '8.7'), ('PWD', '/home/nvidia/proknee_ws/build/my_robot_base'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('JETSON_JETPACK', ''), ('JETSON_P_NUMBER', 'p3767-0000'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099081] (my_robot_base) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target serial_comm_node\x1b[0m\n'}
+[0.099615] (-) TimerEvent: {}
+[0.144276] (my_robot_base) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o\x1b[0m\n'}
+[0.199848] (-) TimerEvent: {}
+[0.300482] (-) TimerEvent: {}
+[0.401103] (-) TimerEvent: {}
+[0.501757] (-) TimerEvent: {}
+[0.602428] (-) TimerEvent: {}
+[0.703174] (-) TimerEvent: {}
+[0.803973] (-) TimerEvent: {}
+[0.904775] (-) TimerEvent: {}
+[1.005690] (-) TimerEvent: {}
+[1.106548] (-) TimerEvent: {}
+[1.207414] (-) TimerEvent: {}
+[1.308250] (-) TimerEvent: {}
+[1.409058] (-) TimerEvent: {}
+[1.509807] (-) TimerEvent: {}
+[1.610513] (-) TimerEvent: {}
+[1.711359] (-) TimerEvent: {}
+[1.812224] (-) TimerEvent: {}
+[1.913063] (-) TimerEvent: {}
+[2.013892] (-) TimerEvent: {}
+[2.114623] (-) TimerEvent: {}
+[2.215322] (-) TimerEvent: {}
+[2.316061] (-) TimerEvent: {}
+[2.416868] (-) TimerEvent: {}
+[2.517699] (-) TimerEvent: {}
+[2.618563] (-) TimerEvent: {}
+[2.719391] (-) TimerEvent: {}
+[2.820068] (-) TimerEvent: {}
+[2.920745] (-) TimerEvent: {}
+[3.021429] (-) TimerEvent: {}
+[3.122139] (-) TimerEvent: {}
+[3.222824] (-) TimerEvent: {}
+[3.323505] (-) TimerEvent: {}
+[3.424164] (-) TimerEvent: {}
+[3.524864] (-) TimerEvent: {}
+[3.625572] (-) TimerEvent: {}
+[3.726336] (-) TimerEvent: {}
+[3.827050] (-) TimerEvent: {}
+[3.927714] (-) TimerEvent: {}
+[4.028726] (-) TimerEvent: {}
+[4.129445] (-) TimerEvent: {}
+[4.230171] (-) TimerEvent: {}
+[4.330903] (-) TimerEvent: {}
+[4.431644] (-) TimerEvent: {}
+[4.532356] (-) TimerEvent: {}
+[4.633075] (-) TimerEvent: {}
+[4.733756] (-) TimerEvent: {}
+[4.834439] (-) TimerEvent: {}
+[4.935173] (-) TimerEvent: {}
+[5.035889] (-) TimerEvent: {}
+[5.136708] (-) TimerEvent: {}
+[5.237488] (-) TimerEvent: {}
+[5.338202] (-) TimerEvent: {}
+[5.438868] (-) TimerEvent: {}
+[5.539585] (-) TimerEvent: {}
+[5.640333] (-) TimerEvent: {}
+[5.741148] (-) TimerEvent: {}
+[5.841966] (-) TimerEvent: {}
+[5.942756] (-) TimerEvent: {}
+[6.043486] (-) TimerEvent: {}
+[6.144320] (-) TimerEvent: {}
+[6.245162] (-) TimerEvent: {}
+[6.345928] (-) TimerEvent: {}
+[6.446759] (-) TimerEvent: {}
+[6.547433] (-) TimerEvent: {}
+[6.648157] (-) TimerEvent: {}
+[6.749017] (-) TimerEvent: {}
+[6.849947] (-) TimerEvent: {}
+[6.950822] (-) TimerEvent: {}
+[7.051589] (-) TimerEvent: {}
+[7.152281] (-) TimerEvent: {}
+[7.252938] (-) TimerEvent: {}
+[7.353600] (-) TimerEvent: {}
+[7.454295] (-) TimerEvent: {}
+[7.555183] (-) TimerEvent: {}
+[7.655967] (-) TimerEvent: {}
+[7.756758] (-) TimerEvent: {}
+[7.857422] (-) TimerEvent: {}
+[7.958171] (-) TimerEvent: {}
+[8.059022] (-) TimerEvent: {}
+[8.159903] (-) TimerEvent: {}
+[8.260801] (-) TimerEvent: {}
+[8.361693] (-) TimerEvent: {}
+[8.462555] (-) TimerEvent: {}
+[8.563440] (-) TimerEvent: {}
+[8.664319] (-) TimerEvent: {}
+[8.765164] (-) TimerEvent: {}
+[8.865925] (-) TimerEvent: {}
+[8.966777] (-) TimerEvent: {}
+[9.067605] (-) TimerEvent: {}
+[9.168474] (-) TimerEvent: {}
+[9.269366] (-) TimerEvent: {}
+[9.370219] (-) TimerEvent: {}
+[9.470882] (-) TimerEvent: {}
+[9.571537] (-) TimerEvent: {}
+[9.672213] (-) TimerEvent: {}
+[9.773023] (-) TimerEvent: {}
+[9.873742] (-) TimerEvent: {}
+[9.974462] (-) TimerEvent: {}
+[10.075153] (-) TimerEvent: {}
+[10.175815] (-) TimerEvent: {}
+[10.276566] (-) TimerEvent: {}
+[10.377326] (-) TimerEvent: {}
+[10.478111] (-) TimerEvent: {}
+[10.578913] (-) TimerEvent: {}
+[10.679741] (-) TimerEvent: {}
+[10.780574] (-) TimerEvent: {}
+[10.881413] (-) TimerEvent: {}
+[10.982155] (-) TimerEvent: {}
+[11.082978] (-) TimerEvent: {}
+[11.183773] (-) TimerEvent: {}
+[11.284426] (-) TimerEvent: {}
+[11.385113] (-) TimerEvent: {}
+[11.485908] (-) TimerEvent: {}
+[11.586721] (-) TimerEvent: {}
+[11.687515] (-) TimerEvent: {}
+[11.788301] (-) TimerEvent: {}
+[11.889093] (-) TimerEvent: {}
+[11.989752] (-) TimerEvent: {}
+[12.090405] (-) TimerEvent: {}
+[12.191202] (-) TimerEvent: {}
+[12.292036] (-) TimerEvent: {}
+[12.392815] (-) TimerEvent: {}
+[12.493513] (-) TimerEvent: {}
+[12.594220] (-) TimerEvent: {}
+[12.694875] (-) TimerEvent: {}
+[12.795549] (-) TimerEvent: {}
+[12.896326] (-) TimerEvent: {}
+[12.997108] (-) TimerEvent: {}
+[13.097896] (-) TimerEvent: {}
+[13.198701] (-) TimerEvent: {}
+[13.299515] (-) TimerEvent: {}
+[13.400337] (-) TimerEvent: {}
+[13.501128] (-) TimerEvent: {}
+[13.601860] (-) TimerEvent: {}
+[13.702611] (-) TimerEvent: {}
+[13.803270] (-) TimerEvent: {}
+[13.903960] (-) TimerEvent: {}
+[14.004671] (-) TimerEvent: {}
+[14.105502] (-) TimerEvent: {}
+[14.206410] (-) TimerEvent: {}
+[14.307251] (-) TimerEvent: {}
+[14.408087] (-) TimerEvent: {}
+[14.508845] (-) TimerEvent: {}
+[14.609518] (-) TimerEvent: {}
+[14.710230] (-) TimerEvent: {}
+[14.810870] (-) TimerEvent: {}
+[14.911641] (-) TimerEvent: {}
+[15.012425] (-) TimerEvent: {}
+[15.113282] (-) TimerEvent: {}
+[15.213998] (-) TimerEvent: {}
+[15.314716] (-) TimerEvent: {}
+[15.415415] (-) TimerEvent: {}
+[15.516209] (-) TimerEvent: {}
+[15.617043] (-) TimerEvent: {}
+[15.717917] (-) TimerEvent: {}
+[15.818765] (-) TimerEvent: {}
+[15.919655] (-) TimerEvent: {}
+[16.020536] (-) TimerEvent: {}
+[16.121330] (-) TimerEvent: {}
+[16.222014] (-) TimerEvent: {}
+[16.322708] (-) TimerEvent: {}
+[16.423452] (-) TimerEvent: {}
+[16.524312] (-) TimerEvent: {}
+[16.625174] (-) TimerEvent: {}
+[16.726024] (-) TimerEvent: {}
+[16.826884] (-) TimerEvent: {}
+[16.927651] (-) TimerEvent: {}
+[17.028351] (-) TimerEvent: {}
+[17.129158] (-) TimerEvent: {}
+[17.229929] (-) TimerEvent: {}
+[17.330805] (-) TimerEvent: {}
+[17.431629] (-) TimerEvent: {}
+[17.532328] (-) TimerEvent: {}
+[17.633041] (-) TimerEvent: {}
+[17.733756] (-) TimerEvent: {}
+[17.834570] (-) TimerEvent: {}
+[17.935384] (-) TimerEvent: {}
+[18.036216] (-) TimerEvent: {}
+[18.137121] (-) TimerEvent: {}
+[18.238000] (-) TimerEvent: {}
+[18.338830] (-) TimerEvent: {}
+[18.439503] (-) TimerEvent: {}
+[18.540158] (-) TimerEvent: {}
+[18.640795] (-) TimerEvent: {}
+[18.741459] (-) TimerEvent: {}
+[18.842166] (-) TimerEvent: {}
+[18.942981] (-) TimerEvent: {}
+[19.043806] (-) TimerEvent: {}
+[19.144482] (-) TimerEvent: {}
+[19.245303] (-) TimerEvent: {}
+[19.345956] (-) TimerEvent: {}
+[19.446599] (-) TimerEvent: {}
+[19.547237] (-) TimerEvent: {}
+[19.647910] (-) TimerEvent: {}
+[19.748684] (-) TimerEvent: {}
+[19.849433] (-) TimerEvent: {}
+[19.950082] (-) TimerEvent: {}
+[20.050740] (-) TimerEvent: {}
+[20.151396] (-) TimerEvent: {}
+[20.252098] (-) TimerEvent: {}
+[20.352729] (-) TimerEvent: {}
+[20.453521] (-) TimerEvent: {}
+[20.554360] (-) TimerEvent: {}
+[20.655182] (-) TimerEvent: {}
+[20.755978] (-) TimerEvent: {}
+[20.856667] (-) TimerEvent: {}
+[20.957373] (-) TimerEvent: {}
+[21.058139] (-) TimerEvent: {}
+[21.158776] (-) TimerEvent: {}
+[21.259518] (-) TimerEvent: {}
+[21.360180] (-) TimerEvent: {}
+[21.460989] (-) TimerEvent: {}
+[21.561866] (-) TimerEvent: {}
+[21.662707] (-) TimerEvent: {}
+[21.763526] (-) TimerEvent: {}
+[21.864234] (-) TimerEvent: {}
+[21.965050] (-) TimerEvent: {}
+[22.065706] (-) TimerEvent: {}
+[22.166350] (-) TimerEvent: {}
+[22.266976] (-) TimerEvent: {}
+[22.367692] (-) TimerEvent: {}
+[22.468521] (-) TimerEvent: {}
+[22.569298] (-) TimerEvent: {}
+[22.669974] (-) TimerEvent: {}
+[22.770609] (-) TimerEvent: {}
+[22.871228] (-) TimerEvent: {}
+[22.971859] (-) TimerEvent: {}
+[23.072556] (-) TimerEvent: {}
+[23.173389] (-) TimerEvent: {}
+[23.274242] (-) TimerEvent: {}
+[23.375064] (-) TimerEvent: {}
+[23.475776] (-) TimerEvent: {}
+[23.576469] (-) TimerEvent: {}
+[23.677228] (-) TimerEvent: {}
+[23.777892] (-) TimerEvent: {}
+[23.878532] (-) TimerEvent: {}
+[23.979338] (-) TimerEvent: {}
+[24.080166] (-) TimerEvent: {}
+[24.181020] (-) TimerEvent: {}
+[24.281861] (-) TimerEvent: {}
+[24.382692] (-) TimerEvent: {}
+[24.483518] (-) TimerEvent: {}
+[24.584225] (-) TimerEvent: {}
+[24.684847] (-) TimerEvent: {}
+[24.785472] (-) TimerEvent: {}
+[24.886123] (-) TimerEvent: {}
+[24.986801] (-) TimerEvent: {}
+[25.087612] (-) TimerEvent: {}
+[25.188430] (-) TimerEvent: {}
+[25.289255] (-) TimerEvent: {}
+[25.390109] (-) TimerEvent: {}
+[25.490865] (-) TimerEvent: {}
+[25.591492] (-) TimerEvent: {}
+[25.692162] (-) TimerEvent: {}
+[25.792913] (-) TimerEvent: {}
+[25.894527] (-) TimerEvent: {}
+[25.995155] (-) TimerEvent: {}
+[26.095787] (-) TimerEvent: {}
+[26.196428] (-) TimerEvent: {}
+[26.297088] (-) TimerEvent: {}
+[26.397761] (-) TimerEvent: {}
+[26.498492] (-) TimerEvent: {}
+[26.599194] (-) TimerEvent: {}
+[26.699854] (-) TimerEvent: {}
+[26.800503] (-) TimerEvent: {}
+[26.901152] (-) TimerEvent: {}
+[27.001813] (-) TimerEvent: {}
+[27.102455] (-) TimerEvent: {}
+[27.203101] (-) TimerEvent: {}
+[27.303739] (-) TimerEvent: {}
+[27.404397] (-) TimerEvent: {}
+[27.505040] (-) TimerEvent: {}
+[27.605686] (-) TimerEvent: {}
+[27.706329] (-) TimerEvent: {}
+[27.806978] (-) TimerEvent: {}
+[27.907637] (-) TimerEvent: {}
+[28.008916] (-) TimerEvent: {}
+[28.109609] (-) TimerEvent: {}
+[28.210368] (-) TimerEvent: {}
+[28.311298] (-) TimerEvent: {}
+[28.412226] (-) TimerEvent: {}
+[28.513142] (-) TimerEvent: {}
+[28.614068] (-) TimerEvent: {}
+[28.714818] (-) TimerEvent: {}
+[28.815685] (-) TimerEvent: {}
+[28.916436] (-) TimerEvent: {}
+[28.961463] (my_robot_base) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable serial_comm_node\x1b[0m\n'}
+[29.016650] (-) TimerEvent: {}
+[29.117474] (-) TimerEvent: {}
+[29.218362] (-) TimerEvent: {}
+[29.319149] (-) TimerEvent: {}
+[29.420006] (-) TimerEvent: {}
+[29.520871] (-) TimerEvent: {}
+[29.621758] (-) TimerEvent: {}
+[29.722417] (-) TimerEvent: {}
+[29.823120] (-) TimerEvent: {}
+[29.923945] (-) TimerEvent: {}
+[30.024714] (-) TimerEvent: {}
+[30.125535] (-) TimerEvent: {}
+[30.226399] (-) TimerEvent: {}
+[30.327271] (-) TimerEvent: {}
+[30.427992] (-) TimerEvent: {}
+[30.528670] (-) TimerEvent: {}
+[30.629313] (-) TimerEvent: {}
+[30.708871] (my_robot_base) StdoutLine: {'line': b'[100%] Built target serial_comm_node\n'}
+[30.729482] (-) TimerEvent: {}
+[30.735197] (my_robot_base) CommandEnded: {'returncode': 0}
+[30.737927] (my_robot_base) JobProgress: {'identifier': 'my_robot_base', 'progress': 'install'}
+[30.760126] (my_robot_base) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nvidia/proknee_ws/build/my_robot_base'], 'cwd': '/home/nvidia/proknee_ws/build/my_robot_base', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PYTHON_BASIC_REPL', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'nvidia'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-12.6/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-12.6/lib64:'), ('HOME', '/home/nvidia'), ('CHROME_DESKTOP', 'code.desktop'), ('OLDPWD', '/home/nvidia/proknee_ws'), ('TERM_PROGRAM_VERSION', '1.105.1'), ('DESKTOP_SESSION', 'ubuntu'), ('JETSON_L4T', '36.4.7'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('JETSON_MODEL', 'NVIDIA Jetson Orin NX Engineering Reference Developer Kit'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '2739'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('SYSTEMD_EXEC_PID', '2915'), ('BUNDLED_DEBUGPY_PATH', '/home/nvidia/.vscode/extensions/ms-python.debugpy-2025.14.1-linux-arm64/bundled/libs/debugpy'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3554'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'nvidia'), ('JETSON_MODULE', 'NVIDIA Jetson Orin NX (16GB ram)'), ('JETSON_SERIAL_NUMBER', '1421525020070'), ('JOURNAL_STREAM', '8:110214'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/cuda-12.6/bin:/opt/ros/humble/bin:/usr/local/cuda-12.6/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/nvidia/.vscode/extensions/ms-python.debugpy-2025.14.1-linux-arm64/bundled/scripts/noConfigScripts:/home/nvidia/.config/Code/User/globalStorage/github.copilot-chat/debugCommand'), ('SESSION_MANAGER', 'local/jetson-nx:@/tmp/.ICE-unix/2887,unix/jetson-nx:/tmp/.ICE-unix/2887'), ('INVOCATION_ID', '86290523019a445f8d3fb60bd6455bf7'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/home/nvidia/.vscode/extensions/ms-python.debugpy-2025.14.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f7f7e7bee3ed306a.txt'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('PYTHONSTARTUP', '/home/nvidia/.config/Code/User/workspaceStorage/fd94302adf72c0eed46c8c1525f62add/ms-python.python/pythonrc.py'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('JETSON_SOC', 'tegra234'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-e10ec5f22f.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('GIT_PAGER', 'cat'), ('QT_IM_MODULE', 'ibus'), ('JETSON_CUDA_ARCH_BIN', '8.7'), ('PWD', '/home/nvidia/proknee_ws/build/my_robot_base'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('JETSON_JETPACK', ''), ('JETSON_P_NUMBER', 'p3767-0000'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[30.776844] (my_robot_base) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[30.777698] (my_robot_base) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[30.778779] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/lib/my_robot_base/serial_comm_node\n'}
+[30.779174] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/package_run_dependencies/my_robot_base\n'}
+[30.779483] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/parent_prefix_path/my_robot_base\n'}
+[30.779865] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/ament_prefix_path.sh\n'}
+[30.780121] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/ament_prefix_path.dsv\n'}
+[30.780411] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/path.sh\n'}
+[30.780693] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/environment/path.dsv\n'}
+[30.780971] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.bash\n'}
+[30.781305] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.sh\n'}
+[30.782029] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.zsh\n'}
+[30.782261] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/local_setup.dsv\n'}
+[30.782419] (my_robot_base) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/package.dsv\n'}
+[30.800823] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/ament_index/resource_index/packages/my_robot_base\n'}
+[30.801343] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/cmake/my_robot_baseConfig.cmake\n'}
+[30.801569] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/cmake/my_robot_baseConfig-version.cmake\n'}
+[30.801767] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/proknee_ws/install/my_robot_base/share/my_robot_base/package.xml\n'}
+[30.801912] (my_robot_base) StdoutLine: {'line': b'-- Installing: /home/nvidia/proknee_ws/install/my_robot_base/lib/my_robot_base/angle_planner\n'}
+[30.802095] (my_robot_base) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/proknee_ws/install/my_robot_base/lib/my_robot_base/keyboard_motion_mode\n'}
+[30.806622] (my_robot_base) CommandEnded: {'returncode': 0}
+[30.829853] (-) TimerEvent: {}
+[30.872841] (my_robot_base) JobEnded: {'identifier': 'my_robot_base', 'rc': 0}
+[30.874673] (-) EventReactorShutdown: {}
