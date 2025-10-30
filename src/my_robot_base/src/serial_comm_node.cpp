@@ -41,7 +41,8 @@ namespace serial_driver
 #define RX_CHF_FIELD_LIST \
     X(Angle)   \
     X(Speed)    \
-    X(Torque) \
+    X(Torque_Motor) \
+    X(Torque_Sensor) \
     X(Temperature) \
     X(Resilience)
 #endif
