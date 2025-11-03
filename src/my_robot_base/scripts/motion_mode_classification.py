@@ -322,7 +322,7 @@ def build_mode_machines() -> Dict[int, BaseModeMachine]:
     }
 
 
-class KeyboardMotionMode(Node):
+class MotionModeClassification(Node):
     """
     键盘选择运动模式并发布到 ROS2 话题。
 
@@ -332,7 +332,7 @@ class KeyboardMotionMode(Node):
     """
 
     def __init__(self):
-        super().__init__('keyboard_motion_mode')
+        super().__init__('motion_mode_classification') #作用是初始化一个名为'motion_mode_classification'的ROS2节点
 
         # 参数
         self.declare_parameter('topic_name', 'motion_mode')
@@ -615,7 +615,7 @@ class KeyboardMotionMode(Node):
 
 def main():
     rclpy.init()
-    node = KeyboardMotionMode()
+    node = MotionModeClassification()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:

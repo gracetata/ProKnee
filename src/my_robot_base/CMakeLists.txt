@@ -29,8 +29,12 @@ install(PROGRAMS scripts/angle_planner.py
   DESTINATION lib/${PROJECT_NAME}
   RENAME angle_planner)
 
-install(PROGRAMS scripts/keyboard_motion_mode.py
+install(PROGRAMS scripts/motion_mode_classification.py
   DESTINATION lib/${PROJECT_NAME}
-  RENAME keyboard_motion_mode)
+  RENAME motion_mode_classification)
+
+install(PROGRAMS scripts/control.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME control)
 
 ament_package()
