@@ -23,14 +23,7 @@ MODE_MAP: Dict[str, int] = {
     '2': 2,  # 下楼
     '3': 3,  # 上坡
     '4': 4,  # 下坡
-}
-
-MODE_DESC: Dict[int, str] = {
-    0: '平地',
-    1: '上楼',
-    2: '下楼',
-    3: '上坡',
-    4: '下坡',
+    '5': 5,  # 初始模式
 }
 
 # 四相命名（可按需调整到具体模式语义）
@@ -439,9 +432,9 @@ class MotionModeClassification(Node):
         msg.data = mode
         self.pub.publish(msg)
         if announce:
-            self.get_logger().info(f'当前模式: {mode} ({MODE_DESC.get(mode, "未知")})')
+            self.get_logger().info(f'当前模式: {mode} ({MODE_MAP.get(mode, "未知")})')
         else:
-            self.get_logger().info(f'切换模式 -> {mode} ({MODE_DESC.get(mode, "未知")})')
+            self.get_logger().info(f'切换模式 -> {mode} ({MODE_MAP.get(mode, "未知")})')
 
     def _republish_timer(self):
         self._publish_mode(self._last_mode, announce=True)
