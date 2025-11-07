@@ -18,12 +18,13 @@ from std_msgs.msg import Int32MultiArray
 
 
 MODE_MAP: Dict[str, int] = {
-    '0': 0,  # 平地
-    '1': 1,  # 上楼
-    '2': 2,  # 下楼
-    '3': 3,  # 上坡
-    '4': 4,  # 下坡
-    '5': 5,  # 初始模式
+    '0': 0,  # 初始模式
+    '1': 1,  # 平地
+    '2': 2,  # 上楼
+    '3': 3,  # 下楼
+    '4': 4,  # 上坡
+    '5': 5,  # 下坡
+    '9': 9,  # 保护模式
 }
 
 # 四相命名（可按需调整到具体模式语义）
@@ -418,11 +419,13 @@ class MotionModeClassification(Node):
     def _print_help(self):
         self.get_logger().info(
             '\n选择运动模式：\n'
-            '  0: 平地\n'
-            '  1: 上楼\n'
-            '  2: 下楼\n'
-            '  3: 上坡\n'
-            '  4: 下坡\n'
+            '  0: 初始模式\n'
+            '  1: 平地\n'
+            '  2: 上楼\n'
+            '  3: 下楼\n'
+            '  4: 上坡\n'
+            '  5: 下坡\n'
+            '  9: 保护模式\n'
             '  h: 显示帮助\n'
             '  q: 退出\n'
             '提示：直接按键即可（不需要回车）。\n')
@@ -431,10 +434,12 @@ class MotionModeClassification(Node):
         msg = Int32()
         msg.data = mode
         self.pub.publish(msg)
+        mode_str = str(mode)  # 将 mode 转换为字符串
+        mode_name = MODE_MAP.get(mode_str, "未知")  # 查找模式名称
         if announce:
-            self.get_logger().info(f'当前模式: {mode} ({MODE_MAP.get(mode, "未知")})')
+            self.get_logger().info(f'当前模式: {mode} ({mode_name})')
         else:
-            self.get_logger().info(f'切换模式 -> {mode} ({MODE_MAP.get(mode, "未知")})')
+            self.get_logger().info(f'切换模式 -> {mode} ({mode_name})')
 
     def _republish_timer(self):
         self._publish_mode(self._last_mode, announce=True)
@@ -528,7 +533,7 @@ class MotionModeClassification(Node):
 
     def _line_input_loop(self):
         """回退：逐行读取（需要回车）。"""
-        self.get_logger().info('回退到行输入模式：输入 0~4 设置模式，h 显示帮助，q 退出。')
+        self.get_logger().info('回退到行输入模式：输入 0~5 设置模式，h 显示帮助，q 退出。')
         while self._running and rclpy.ok():
             try:
                 line = sys.stdin.readline()
@@ -551,7 +556,7 @@ class MotionModeClassification(Node):
                     self._reset_machine_on_mode_change()
                     self._publish_classification()
                 else:
-                    self.get_logger().warn('请输入 0~4，或按 h 查看帮助，q 退出。')
+                    self.get_logger().warn('请输入 0~5，或按 h 查看帮助，q 退出。')
             except Exception as e:
                 self.get_logger().error(f'读取输入失败: {e}')
                 time.sleep(0.2)

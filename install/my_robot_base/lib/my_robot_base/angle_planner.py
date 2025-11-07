@@ -1,1 +1,0 @@
-/home/nvidia/proknee_ws/src/my_robot_base/scripts/angle_planner.py

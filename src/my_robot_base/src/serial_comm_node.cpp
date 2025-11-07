@@ -32,7 +32,8 @@ namespace serial_driver
 // 发送 int8 字段（会依次映射到 TxPayload::chb[0..]）
 #ifndef TX_CHB_FIELD_LIST
 #define TX_CHB_FIELD_LIST \
-    X(mode) 
+    X(mode) \
+    X(control_mode)
 #endif
 
 // -------- 接收字段同理：这里定义要读取并发布为 key=value 的字段与顺序 --------
@@ -133,6 +134,12 @@ public:
             "mode", 10,
             [this](const std_msgs::msg::Int32::SharedPtr msg){
                 latest_.mode = static_cast<uint8_t>(std::clamp(msg->data, 0, 255));
+            }
+        );
+        control_mode_sub_ = this->create_subscription<std_msgs::msg::Int32>(
+            "control_mode", 10,
+            [this](const std_msgs::msg::Int32::SharedPtr msg){
+                latest_.control_mode = static_cast<uint8_t>(std::clamp(msg->data, 0, 255));
             }
         );
 
@@ -363,6 +370,7 @@ private:
     // ROS 2 订阅者、发布者和定时器
     rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr classification_sub_;
     rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr mode_sub_;
+    rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr control_mode_sub_;
     rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr angle_target_sub_;
     rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr speed_target_sub_;
     rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr torque_target_sub_;

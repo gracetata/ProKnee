@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-002e836beec0dc84a47c.json",
+					"jsonFile" : "directory-.-812d7ed467f8f29705ba.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.12"
@@ -51,7 +51,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "serial_comm_node::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-serial_comm_node-4964f3abfd3623cf5c48.json",
+					"jsonFile" : "target-serial_comm_node-c59cc815a25d48778f50.json",
 					"name" : "serial_comm_node",
 					"projectIndex" : 0
 				},
