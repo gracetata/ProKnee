@@ -29,6 +29,10 @@ install(PROGRAMS scripts/angle_planner.py
   DESTINATION lib/${PROJECT_NAME}
   RENAME angle_planner)
 
+install(PROGRAMS scripts/control_test.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME control_test)
+
 install(PROGRAMS scripts/motion_mode_classification.py
   DESTINATION lib/${PROJECT_NAME}
   RENAME motion_mode_classification)

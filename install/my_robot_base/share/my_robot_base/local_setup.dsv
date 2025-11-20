@@ -1,2 +1,1 @@
-source;share/my_robot_base/environment/ament_prefix_path.sh
-source;share/my_robot_base/environment/path.sh
+/home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base/ament_cmake_environment_hooks/local_setup.dsv

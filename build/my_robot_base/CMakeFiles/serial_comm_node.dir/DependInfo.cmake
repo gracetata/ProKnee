@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp" "CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o" "gcc" "CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o.d"
+  "/home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base/src/serial_comm_node.cpp" "CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o" "gcc" "CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o.d"
   )
 
 # Targets to which this target links.

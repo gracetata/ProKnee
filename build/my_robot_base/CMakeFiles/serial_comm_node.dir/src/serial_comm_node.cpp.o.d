@@ -1,5 +1,5 @@
 CMakeFiles/serial_comm_node.dir/src/serial_comm_node.cpp.o: \
- /home/nvidia/proknee_ws/src/my_robot_base/src/serial_comm_node.cpp \
+ /home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base/src/serial_comm_node.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp \
  /usr/include/c++/11/csignal \

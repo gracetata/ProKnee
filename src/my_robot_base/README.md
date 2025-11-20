@@ -127,6 +127,9 @@ ros2 topic echo /serial_feedback
 # 终端5 (可选): 观察目标力矩和角度
 ros2 topic echo /torque_target
 ros2 topic echo /angle_target
+
+# 观测全部topic
+ros2 run rqt_topic rqt_topic
 ```
 
 ### 测试方法（无下位机时）

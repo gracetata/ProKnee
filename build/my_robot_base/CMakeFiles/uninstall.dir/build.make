@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nvidia/proknee_ws/src/my_robot_base
+CMAKE_SOURCE_DIR = /home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nvidia/proknee_ws/build/my_robot_base
+CMAKE_BINARY_DIR = /home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/nvidia/proknee_ws/build/my_robot_base && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nvidia/proknee_ws/src/my_robot_base /home/nvidia/proknee_ws/src/my_robot_base /home/nvidia/proknee_ws/build/my_robot_base /home/nvidia/proknee_ws/build/my_robot_base /home/nvidia/proknee_ws/build/my_robot_base/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base /home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base /home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base /home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base /home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 
