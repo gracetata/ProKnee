@@ -50,8 +50,16 @@ namespace serial_driver
 
 // 接收 int16 字段（依次从 RxPayload::chs[0..] 取值）
 #ifndef RX_CHS_FIELD_LIST
-#define RX_CHS_FIELD_LIST \
-    X(foot_pressure)
+#define RX_CHS_FIELD_LIST 
+    // X(foot_pressure)
+#endif
+
+// 接收 int8 字段（依次从 RxPayload::chb[0..] 取值）
+#ifndef RX_CHB_FIELD_LIST
+#define RX_CHB_FIELD_LIST \
+    X(mode_now) \
+    X(control_mode_now) \
+    X(macro_phase_now)
 #endif
 
 class SerialCommNode : public rclcpp::Node
@@ -60,7 +68,7 @@ public:
     SerialCommNode() : Node("serial_comm_node")
     {
         // 1. 声明并获取参数
-        this->declare_parameter<std::string>("port", "/dev/ttyUSB0");
+        this->declare_parameter<std::string>("port", "/dev/ttyUSB1");
         this->declare_parameter<int>("baudrate", 115200);
         this->declare_parameter<double>("tx_rate_hz", 50.0);
         this->declare_parameter<bool>("publish_raw_feedback", true);
@@ -217,6 +225,9 @@ private:
         #define X(name) int chs_##name = -1;
         RX_CHS_FIELD_LIST
         #undef X
+        #define X(name) int chb_##name = -1;
+        RX_CHB_FIELD_LIST
+        #undef X
     } rx_map_;
     // ---------------- 协议与封包定义（固定负载：10个float + 5个int16 + 3个int8） ----------------
     // 帧结构: [0xAA][payload...][0xBB]
@@ -325,6 +336,16 @@ private:
         }
         RX_CHS_FIELD_LIST
         #undef X
+        // int8 字段
+        #define X(name) \
+        { \
+            int v = (rx_map_.chb_##name >= 0 && rx_map_.chb_##name < 3) ? (int)p.chb[rx_map_.chb_##name] : 0; \
+            std::snprintf(buf, sizeof(buf), #name "=%d", v); \
+            if (!first) out += ", "; else first = false; \
+            out += buf; \
+        }
+        RX_CHB_FIELD_LIST
+        #undef X
 
         auto msg = std::make_unique<std_msgs::msg::String>();
         msg->data = std::move(out);
@@ -411,6 +432,12 @@ private:
             int idx = 0;
             #define X(name) rx_map_.chs_##name = this->declare_parameter<int>("rx_chs_" #name "_idx", idx++);
             RX_CHS_FIELD_LIST
+            #undef X
+        }
+        {
+            int idx = 0;
+            #define X(name) rx_map_.chb_##name = this->declare_parameter<int>("rx_chb_" #name "_idx", idx++);
+            RX_CHB_FIELD_LIST
             #undef X
         }
     }

@@ -116,7 +116,7 @@ class ControlTest(Node):
                         # Convert input to int for control_mode
                         value = int(float(input_str))  # Allow float input but convert to int
                         if value not in [0, 1]:
-                            self.get_logger().warn(f'Invalid control_mode: {value}. Use 0 (angle) or 1 (torque)')
+                            self.get_logger().warn(f'Invalid control_mode: {value}. Use 1 (angle) or 2 (torque)')
                             continue
                         self.target_control_mode = value
                         self.get_logger().info(f'Set control_mode: {value} ({"angle" if value==0 else "torque"} control)')
