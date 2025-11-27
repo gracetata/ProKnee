@@ -40,18 +40,21 @@ namespace serial_driver
 // 接收浮点字段（依次从 RxPayload::chf[0..] 取值）
 #ifndef RX_CHF_FIELD_LIST
 #define RX_CHF_FIELD_LIST \
-    X(Angle)   \
-    X(Speed)    \
+    X(Knee_Angle)   \
+    X(Knee_Speed)    \
+    X(Hip_Sagittal_Angle) \
     X(Torque_Motor) \
     X(Torque_Sensor) \
     X(Temperature) \
-    X(Resilience)
+    X(Resilience)\
+    X(cnt) \
+    X(Cnt_in_Phase)
 #endif
 
 // 接收 int16 字段（依次从 RxPayload::chs[0..] 取值）
 #ifndef RX_CHS_FIELD_LIST
 #define RX_CHS_FIELD_LIST 
-    // X(foot_pressure)
+
 #endif
 
 // 接收 int8 字段（依次从 RxPayload::chb[0..] 取值）
@@ -68,9 +71,9 @@ public:
     SerialCommNode() : Node("serial_comm_node")
     {
         // 1. 声明并获取参数
-        this->declare_parameter<std::string>("port", "/dev/ttyUSB1");
+        this->declare_parameter<std::string>("port", "/dev/ttyUSB0");
         this->declare_parameter<int>("baudrate", 115200);
-        this->declare_parameter<double>("tx_rate_hz", 50.0);
+        this->declare_parameter<double>("tx_rate_hz", 100.0);
         this->declare_parameter<bool>("publish_raw_feedback", true);
         // 映射参数
         load_channel_mapping_params();
@@ -378,6 +381,25 @@ private:
 
         try {
             m_driver->port()->send(frame);
+            
+            // Debug: 打印发送的关键控制量，确认是否更新
+            // 仅在值发生变化或低频打印，避免刷屏。这里为了调试方便，每100次打印一次(约1Hz)
+            static int debug_cnt = 0;
+            if (++debug_cnt >= 100) {
+                debug_cnt = 0;
+                RCLCPP_INFO(this->get_logger(), "TX: mode=%d, ctl_mode=%d, trq=%.2f, ang=%.2f", 
+                    (int)latest_.mode, (int)latest_.control_mode, 
+                    (double)latest_.torque_target, (double)latest_.angle_target);
+                
+                // 打印关键字节的原始Hex值，用于排查对齐问题
+                // Header(1) + Float(40) + Int16(10) = 51. 所以 chb[0] 应该是 frame[51]
+                size_t offset_chb = 1 + 40 + 10;
+                if (frame.size() > offset_chb + 1) {
+                     RCLCPP_INFO(this->get_logger(), "TX Raw: Frame[%zu](mode)=0x%02X, Frame[%zu](ctl)=0x%02X. MapIdx: mode=%d", 
+                        offset_chb, frame[offset_chb], offset_chb+1, frame[offset_chb+1], tx_map_.chb_mode);
+                }
+            }
+
         } catch (const std::exception & e) {
             RCLCPP_ERROR(this->get_logger(), "Failed to send TX frame: %s", e.what());
         }
@@ -433,6 +455,7 @@ private:
             #define X(name) rx_map_.chs_##name = this->declare_parameter<int>("rx_chs_" #name "_idx", idx++);
             RX_CHS_FIELD_LIST
             #undef X
+            (void)idx; // 消除未使用变量警告
         }
         {
             int idx = 0;

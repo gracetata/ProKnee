@@ -313,6 +313,12 @@ message(STATUS "Execute custom install script")
 # install("TARGETS" "serial_comm_node" "DESTINATION" "lib/my_robot_base")
 include("/home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
+# install(DIRECTORY "scripts/Inference_Support" "DESTINATION" "share/my_robot_base")
+ament_cmake_symlink_install_directory("/home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base" DIRECTORY "scripts/Inference_Support" "DESTINATION" "share/my_robot_base")
+
+# install(DIRECTORY "Models" "DESTINATION" "share/my_robot_base")
+ament_cmake_symlink_install_directory("/home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base" DIRECTORY "Models" "DESTINATION" "share/my_robot_base")
+
 # install(FILES "/home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/my_robot_base" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base" FILES "/home/nvidia/WorkSpace/ProKnee-Master/build/my_robot_base/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/my_robot_base" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 

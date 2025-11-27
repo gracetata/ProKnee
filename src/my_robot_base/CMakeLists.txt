@@ -41,4 +41,17 @@ install(PROGRAMS scripts/control.py
   DESTINATION lib/${PROJECT_NAME}
   RENAME control)
 
+install(PROGRAMS scripts/nn_control.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME nn_control)
+
+install(PROGRAMS scripts/keyboard_pub.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME keyboard_pub)
+
+install(DIRECTORY scripts/Inference_Support
+  DESTINATION share/${PROJECT_NAME})
+
+install(DIRECTORY Models
+  DESTINATION share/${PROJECT_NAME})
 ament_package()

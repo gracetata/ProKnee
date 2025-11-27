@@ -2,3 +2,5 @@
 /home/nvidia/WorkSpace/ProKnee-Master/install/my_robot_base/lib/my_robot_base/control_test
 /home/nvidia/WorkSpace/ProKnee-Master/install/my_robot_base/lib/my_robot_base/motion_mode_classification
 /home/nvidia/WorkSpace/ProKnee-Master/install/my_robot_base/lib/my_robot_base/control
+/home/nvidia/WorkSpace/ProKnee-Master/install/my_robot_base/lib/my_robot_base/nn_control
+/home/nvidia/WorkSpace/ProKnee-Master/install/my_robot_base/lib/my_robot_base/keyboard_pub

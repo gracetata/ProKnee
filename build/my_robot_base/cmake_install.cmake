@@ -62,6 +62,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/my_robot_base" TYPE PROGRAM RENAME "control" FILES "/home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base/scripts/control.py")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/my_robot_base" TYPE PROGRAM RENAME "nn_control" FILES "/home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base/scripts/nn_control.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/my_robot_base" TYPE PROGRAM RENAME "keyboard_pub" FILES "/home/nvidia/WorkSpace/ProKnee-Master/src/my_robot_base/scripts/keyboard_pub.py")
+endif()
+
 if(CMAKE_INSTALL_COMPONENT)
   set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 else()

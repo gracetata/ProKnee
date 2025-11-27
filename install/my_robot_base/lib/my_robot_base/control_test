@@ -7,7 +7,7 @@ from std_msgs.msg import Float32, Int32
 #输入 m - 切换到 mode topic（发布整数）
 #输入 a - 切换到 angle_target topic（发布浮点数）
 #输入 t - 切换到 torque_target topic（发布浮点数）
-#输入 c - 切换到 control_mode topic（发布整数：0=角度控制，1=力矩控制）
+#输入 c - 切换到 control_mode topic（发布整数：1=力矩控制，2=位置控制）
 #输入数字 - 发布到当前选中的 topic
 class ControlTest(Node):
     """
@@ -36,7 +36,7 @@ class ControlTest(Node):
         self.get_logger().info('  m - Switch to mode topic (integer)')
         self.get_logger().info('  a - Switch to angle_target topic (float)')
         self.get_logger().info('  t - Switch to torque_target topic (float)')
-        self.get_logger().info('  c - Switch to control_mode topic (0=angle, 1=torque)')
+        self.get_logger().info('  c - Switch to control_mode topic (1=torque, 2=position)')
         self.get_logger().info('  <number> - Publish value to current topic')
         self.get_logger().info(f'Current topic: angle_target')
         
@@ -89,7 +89,7 @@ class ControlTest(Node):
                     continue
                 elif input_str == 'c':
                     self.current_topic = 'control_mode'
-                    self.get_logger().info('Switched to control_mode topic (0=angle, 1=torque)')
+                    self.get_logger().info('Switched to control_mode topic (1=torque, 2=position)')
                     continue
                 
                 # Try to parse as number and update current topic value
@@ -115,11 +115,11 @@ class ControlTest(Node):
                     elif self.current_topic == 'control_mode':
                         # Convert input to int for control_mode
                         value = int(float(input_str))  # Allow float input but convert to int
-                        if value not in [0, 1]:
-                            self.get_logger().warn(f'Invalid control_mode: {value}. Use 1 (angle) or 2 (torque)')
+                        if value not in [1, 2]:
+                            self.get_logger().warn(f'Invalid control_mode: {value}. Use 1 (torque) or 2 (position)')
                             continue
                         self.target_control_mode = value
-                        self.get_logger().info(f'Set control_mode: {value} ({"angle" if value==0 else "torque"} control)')
+                        self.get_logger().info(f'Set control_mode: {value} ({"torque" if value==1 else "position"} control)')
                     
                 except ValueError:
                     # Handle cases where input is not a valid number
